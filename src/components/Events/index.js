@@ -37,7 +37,10 @@ class EventIndex extends React.Component {
           {this.state.events.map(event => {
             return (
               <li key={event._id}>
-                <Link to={`/events/${event._id}`}>{event.title}</Link>
+                <Link to={`/events/${event._id}`}>{event.description}</Link>
+                <h4>{event.description}</h4>
+                <h4>{event.date}</h4>
+                <h4>{event.time}</h4>
               </li>
             )
           })}
