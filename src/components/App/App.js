@@ -9,6 +9,8 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import EventCreate from '../Events/Create'
+import EventShow from '../Events/Show'
+import EventIndex from '../Events/Index'
 
 class App extends Component {
   constructor () {
@@ -57,6 +59,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/event-create' render={() => (
             <EventCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/event-show' render={() => (
+            <EventShow msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route path='/event-index' render={() => (
+            <EventIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
