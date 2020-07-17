@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-import apiConfig from '../../apiConfig'
+import apiUrl from '../../apiConfig'
 
-class EventShow extends React.Component {
-  state = {
-    event: null,
-    deleted: false
+class EventShow extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      event: null,
+      deleted: false
+    }
   }
+
   componentDidMount () {
-    const id = this.props.match.params.id
     const { msgAlert, user } = this.props
+    const id = this.props.match.params.id
     axios({
       method: 'GET',
-      url: `${apiConfig}/events/${id}`,
+      url: `${apiUrl}/events/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -40,7 +45,7 @@ class EventShow extends React.Component {
     const { msgAlert, user } = this.props
     axios({
       method: 'DELETE',
-      url: `${apiConfig}/events/${id}`,
+      url: `${apiUrl}/events/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }

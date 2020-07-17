@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import apiConfig from '../../apiConfig'
+import apiUrl from '../../apiConfig'
 
 class EventIndex extends React.Component {
   state = {
@@ -9,7 +9,7 @@ class EventIndex extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(`${apiConfig}/events`)
+    axios.get(`${apiUrl}/events`)
       .then(response => {
         // handle success
         this.setState({
@@ -38,7 +38,7 @@ class EventIndex extends React.Component {
             return (
               <li key={event._id}>
                 <Link to={`/events/${event._id}`}>{event.description}</Link>
-                <h4>{event.description}</h4>
+                <h4>{event.place}</h4>
                 <h4>{event.date}</h4>
                 <h4>{event.time}</h4>
               </li>
