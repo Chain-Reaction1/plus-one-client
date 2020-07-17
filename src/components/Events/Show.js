@@ -9,8 +9,8 @@ class EventShow extends React.Component {
     deleted: false
   }
   componentDidMount () {
-    const id = this.props.match.params.id
     const { msgAlert, user } = this.props
+    const id = this.props.match.params.id
     axios({
       method: 'GET',
       url: `${apiConfig}/events/${id}`,
