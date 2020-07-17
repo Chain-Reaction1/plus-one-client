@@ -3,38 +3,39 @@ import axios from 'axios'
 import apiConfig from '../../apiConfig'
 // import { Redirect } from 'react-router-dom'
 
-class EventCreate extends React.Component {
+class KickbackCreate extends React.Component {
   state = {
-    event: {
+    kickback: {
+      kickbackName: '',
       place: '',
       date: '',
       time: '',
       description: ''
     }
   }
-  handleInputChange = (event) => {
-    // get the event key from the input name field
-    const eventKey = event.target.name
+  handleInputChange = (kickback) => {
+    // get the kickback key from the input name field
+    const kickbackKey = kickback.target.name
     // get the input value that the user typed in
-    const value = event.target.value
+    const value = kickback.target.value
     // make a copy of the current state
-    const eventCopy = Object.assign({}, this.state.event)
+    const kickbackCopy = Object.assign({}, this.state.kickback)
     // update the copy with the new user input
-    eventCopy[eventKey] = value
+    kickbackCopy[kickbackKey] = value
     // update the state with our updated copy
-    this.setState({ event: eventCopy })
+    this.setState({ kickback: kickbackCopy })
   }
-  handleSubmit = (event) => {
-    event.preventDefault()
+  handleSubmit = (kickback) => {
+    kickback.preventDefault()
     const { msgAlert, user } = this.props
     axios({
       method: 'POST',
-      url: `${apiConfig}/events`,
+      url: `${apiConfig}/kickbacks`,
       headers: {
         'Authorization': `Token token=${user.token}`
       },
       data: {
-        event: this.state.event
+        kickback: this.state.kickback
       }
 
     })
@@ -45,7 +46,8 @@ class EventCreate extends React.Component {
       }))
       .then(res => {
         this.setState({
-          event: {
+          kickback: {
+            kickbackName: '',
             place: '',
             date: '',
             time: '',
@@ -61,10 +63,11 @@ class EventCreate extends React.Component {
       <div>
         <h1>Create Event</h1>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleInputChange} value={this.state.event.place} name="place" placeholder="Place" />
-          <input onChange={this.handleInputChange} value={this.state.event.date} name="date" placeholder="Date" />
-          <input onChange={this.handleInputChange} value={this.state.event.time} name="time" placeholder="Time" />
-          <input onChange={this.handleInputChange} value={this.state.event.description} name="description" placeholder="Description" />
+          <input onChange={this.handleInputChange} value={this.state.kickback.kickbackName} name="kickbackName" placeholder="Event Name" />
+          <input onChange={this.handleInputChange} value={this.state.kickback.place} name="place" placeholder="Place" />
+          <input onChange={this.handleInputChange} value={this.state.kickback.date} name="date" placeholder="Date" />
+          <input onChange={this.handleInputChange} value={this.state.kickback.time} name="time" placeholder="Time" />
+          <input onChange={this.handleInputChange} value={this.state.kickback.description} name="description" placeholder="Description" />
           <button type="submit">Save</button>
         </form>
       </div>
@@ -72,4 +75,4 @@ class EventCreate extends React.Component {
   }
 }
 
-export default EventCreate
+export default KickbackCreate

@@ -3,19 +3,20 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 
-class EventIndex extends React.Component {
+class KickbackIndex extends React.Component {
   state = {
-    events: null
+    kickbacks: null
   }
 
   componentDidMount () {
-    axios.get(`${apiUrl}/events`)
+    axios.get(`${apiUrl}/kickbacks`)
       .then(response => {
         // handle success
         this.setState({
-          events: response.data.events
+          kickbacks: response.data.kickbacks
         })
       })
+      .then(() => history.push('/'))
       .catch(error => {
         // handle error
         console.log(error)
@@ -24,23 +25,24 @@ class EventIndex extends React.Component {
   render () {
     let jsx
     // if the API has not responded yet
-    if (this.state.events === null) {
+    if (this.state.kickbacks === null) {
       jsx = <p>Loading...</p>
 
-    // if the API responds with no events
-    } else if (this.state.events.length === 0) {
-      jsx = <p>No events, please add a event</p>
+    // if the API responds with no kickbacks
+    } else if (this.state.kickbacks.length === 0) {
+      jsx = <p>No events, please add an event</p>
     // if the API responds with events
     } else {
       jsx = (
         <ul>
-          {this.state.events.map(event => {
+          {this.state.kickbacks.map(kickback => {
             return (
-              <li key={event._id}>
-                <Link to={`/events/${event._id}`}>{event.description}</Link>
-                <h4>{event.place}</h4>
-                <h4>{event.date}</h4>
-                <h4>{event.time}</h4>
+              <li key={kickback._id}>
+                <Link to={`/kickbacks/${kickback._id}`}>{kickback.kickbackName}</Link>
+                <h4>{kickback.description}</h4>
+                <h4>{kickback.date}</h4>
+                <h4>{kickback.time}</h4>
+
               </li>
             )
           })}
@@ -57,4 +59,4 @@ class EventIndex extends React.Component {
   }
 }
 
-export default EventIndex
+export default KickbackIndex
