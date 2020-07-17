@@ -7,8 +7,7 @@ const authenticatedOptions = (
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
     <Nav.Link href="#kickback-create">Create Event</Nav.Link>
-    <Nav.Link href="#kickback-show">Show Event</Nav.Link>
-    <Nav.Link href="#index">Events</Nav.Link>
+    <Nav.Link href="#kickbacks">Events</Nav.Link>
   </Fragment>
 )
 
@@ -16,20 +15,20 @@ const unauthenticatedOptions = (
   <Fragment>
     <Nav.Link href="#sign-up">Sign Up</Nav.Link>
     <Nav.Link href="#sign-in">Sign In</Nav.Link>
-    <Nav.Link href="#index">Events</Nav.Link>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
     <Nav.Link to="/">Home</Nav.Link>
+    <Nav.Link href="#kickbacks">Events</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      react-auth-template
+      plusONE
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

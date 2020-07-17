@@ -8,21 +8,22 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import KickbackCreate from '../Events/Create'
-import KickbackShow from '../Events/Show'
-import KickbackIndex from '../Events/Index'
+import KickbackCreate from '../Events/kickbacksCreate'
+import KickbackShow from '../Events/kickbacksShow'
+import KickbackIndex from '../Events/kickbacksIndex'
 
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
+      kickbacks: [],
       user: null,
       msgAlerts: []
     }
   }
-
   setUser = user => this.setState({ user })
+  setKickbacks = kickbacks => this.setState({ kickbacks: kickbacks })
 
   clearUser = () => this.setState({ user: null })
 
@@ -60,11 +61,12 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/kickback-create' render={() => (
             <KickbackCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/kickback-show' render={() => (
-            <KickbackShow msgAlert={this.msgAlert} user={user} />
-          )} />
-          <Route path='/index' render={() => (
-            <KickbackIndex msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute user={user} path='/kickbacks/:id' render={({ match }) => {
+            this.state.kickbacks.find(kickback => kickback.id === match.params.id)
+            return <KickbackShow msgAlert={this.msgAlert} match={match} user={user} />
+          }} />
+          <Route exact path='/kickbacks' render={() => (
+            <KickbackIndex msgAlert={this.msgAlert} setKickbacks={this.setKickbacks} user={user} />
           )} />
         </main>
       </Fragment>

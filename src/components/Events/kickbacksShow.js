@@ -9,6 +9,8 @@ class KickbackShow extends React.Component {
     deleted: false
   }
   componentDidMount () {
+    console.log('props are', this.props)
+    console.log('match is', this.match)
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
     axios({
@@ -18,17 +20,23 @@ class KickbackShow extends React.Component {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(() => msgAlert({
-        heading: 'Event Show Success',
-        message: 'Message Success',
-        variant: 'Success'
-      }))
+      // .then(() => msgAlert({
+      //   heading: 'Event Show Success',
+      //   message: 'Message Success',
+      //   variant: 'Success'
+      // }))
       .then(response => {
+        console.log('this', response)
         // handle success
         this.setState({
           kickback: response.data.kickback
         })
       })
+      .then(() => msgAlert({
+        heading: 'Event Show Success',
+        message: 'Message Success',
+        variant: 'Success'
+      }))
       .catch(error => {
         // handle error
         console.log(error)

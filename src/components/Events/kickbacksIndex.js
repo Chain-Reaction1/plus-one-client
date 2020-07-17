@@ -9,12 +9,14 @@ class KickbackIndex extends React.Component {
   }
 
   componentDidMount () {
+    const { setKickbacks } = this.props
     axios.get(`${apiConfig}/kickbacks`)
       .then(response => {
         // handle success
         this.setState({
           kickbacks: response.data.kickbacks
         })
+        setKickbacks(response.data.kickbacks)
       })
       .catch(error => {
         // handle error
