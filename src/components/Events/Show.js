@@ -9,6 +9,7 @@ class KickbackShow extends React.Component {
     deleted: false
   }
   componentDidMount () {
+    console.log(this.props)
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
     axios({
@@ -29,6 +30,7 @@ class KickbackShow extends React.Component {
           kickback: response.data.kickback
         })
       })
+      .then(() => history.push('/'))
       .catch(error => {
         // handle error
         console.log(error)

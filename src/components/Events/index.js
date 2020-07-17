@@ -16,6 +16,7 @@ class KickbackIndex extends React.Component {
           kickbacks: response.data.kickbacks
         })
       })
+      .then(() => history.push('/'))
       .catch(error => {
         // handle error
         console.log(error)
@@ -37,7 +38,7 @@ class KickbackIndex extends React.Component {
           {this.state.kickbacks.map(kickback => {
             return (
               <li key={kickback._id}>
-                <Link to={`/kickbacks/${kickback._id}`}>{kickback.description}</Link>
+                <Link to={`/kickbacks/${kickback._id}`}>{kickback.kickbackName}</Link>
                 <h4>{kickback.description}</h4>
                 <h4>{kickback.date}</h4>
                 <h4>{kickback.time}</h4>

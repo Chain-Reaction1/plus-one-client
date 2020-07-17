@@ -18,6 +18,7 @@ class App extends Component {
 
     this.state = {
       user: null,
+      kickback: null,
       msgAlerts: []
     }
   }
@@ -60,10 +61,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/kickback-create' render={() => (
             <KickbackCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/kickback-show' render={() => (
+          <Route user={user} exact path='/kickbacks/:id' render={() => (
             <KickbackShow msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route path='/index' render={() => (
+          <Route path='/kickbacks' render={() => (
             <KickbackIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>

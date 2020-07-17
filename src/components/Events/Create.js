@@ -6,6 +6,7 @@ import apiConfig from '../../apiConfig'
 class KickbackCreate extends React.Component {
   state = {
     kickback: {
+      kickbackName: '',
       place: '',
       date: '',
       time: '',
@@ -46,6 +47,7 @@ class KickbackCreate extends React.Component {
       .then(res => {
         this.setState({
           kickback: {
+            kickbackName: '',
             place: '',
             date: '',
             time: '',
@@ -61,6 +63,7 @@ class KickbackCreate extends React.Component {
       <div>
         <h1>Create Event</h1>
         <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleInputChange} value={this.state.kickback.kickbackName} name="kickbackName" placeholder="Event Name" />
           <input onChange={this.handleInputChange} value={this.state.kickback.place} name="place" placeholder="Place" />
           <input onChange={this.handleInputChange} value={this.state.kickback.date} name="date" placeholder="Date" />
           <input onChange={this.handleInputChange} value={this.state.kickback.time} name="time" placeholder="Time" />
