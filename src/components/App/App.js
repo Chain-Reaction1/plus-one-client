@@ -8,9 +8,9 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import EventCreate from '../Events/Create'
-import EventShow from '../Events/Show'
-import EventIndex from '../Events/Index'
+import KickbackCreate from '../Events/Create'
+import KickbackShow from '../Events/Show'
+import KickbackIndex from '../Events/Index'
 
 class App extends Component {
   constructor () {
@@ -57,14 +57,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/event-create' render={() => (
-            <EventCreate msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute user={user} path='/kickback-create' render={() => (
+            <KickbackCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/event-show' render={() => (
-            <EventShow msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute user={user} path='/kickback-show' render={() => (
+            <KickbackShow msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route path='/event-index' render={() => (
-            <EventIndex msgAlert={this.msgAlert} user={user} />
+          <Route path='/index' render={() => (
+            <KickbackIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

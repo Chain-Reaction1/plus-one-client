@@ -3,9 +3,9 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import apiConfig from '../../apiConfig'
 
-class EventShow extends React.Component {
+class KickbackShow extends React.Component {
   state = {
-    event: null,
+    kickback: null,
     deleted: false
   }
   componentDidMount () {
@@ -13,7 +13,7 @@ class EventShow extends React.Component {
     const { msgAlert, user } = this.props
     axios({
       method: 'GET',
-      url: `${apiConfig}/events/${id}`,
+      url: `${apiConfig}/kickbacks/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -26,7 +26,7 @@ class EventShow extends React.Component {
       .then(response => {
         // handle success
         this.setState({
-          event: response.data.event
+          kickback: response.data.kickback
         })
       })
       .catch(error => {
@@ -35,12 +35,12 @@ class EventShow extends React.Component {
       })
   }
 
-  deleteEvent = () => {
+  deleteKickback = () => {
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
     axios({
       method: 'DELETE',
-      url: `${apiConfig}/events/${id}`,
+      url: `${apiConfig}/kickbacks/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -61,22 +61,22 @@ class EventShow extends React.Component {
 
   render () {
     if (this.state.deleted === true) {
-      return <Redirect to='/events' />
+      return <Redirect to='/kickbacks' />
     }
 
     let jsx
     // if the API has not responded yet
-    if (this.state.event === null) {
+    if (this.state.kickback === null) {
       jsx = <p>Loading...</p>
     // after API responds
     } else {
       jsx = (
         <div>
-          <h3>{this.state.event.place}</h3>
-          <h4>{this.state.event.date}</h4>
-          <h4>{this.state.event.description}</h4>
-          <h4>{this.state.event.time}</h4>
-          <button onClick={this.deleteEvent}>Delete event</button>
+          <h3>{this.state.kickback.place}</h3>
+          <h4>{this.state.kickback.date}</h4>
+          <h4>{this.state.kickback.description}</h4>
+          <h4>{this.state.kickback.time}</h4>
+          <button onClick={this.deleteKickback}>Delete event</button>
         </div>
       )
     }
@@ -89,4 +89,4 @@ class EventShow extends React.Component {
   }
 }
 
-export default EventShow
+export default KickbackShow
