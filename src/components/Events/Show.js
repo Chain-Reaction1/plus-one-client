@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-import apiConfig from '../../apiConfig'
+import apiUrl from '../../apiConfig'
 
 class KickbackShow extends React.Component {
   state = {
     kickback: null,
     deleted: false
+
   }
+
   componentDidMount () {
-    console.log(this.props)
-    const id = this.props.match.params.id
     const { msgAlert, user } = this.props
+    const id = this.props.match.params.id
     axios({
       method: 'GET',
-      url: `${apiConfig}/kickbacks/${id}`,
+
+      url: `${apiUrl}/events/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }
@@ -42,7 +44,7 @@ class KickbackShow extends React.Component {
     const { msgAlert, user } = this.props
     axios({
       method: 'DELETE',
-      url: `${apiConfig}/kickbacks/${id}`,
+      url: `${apiUrl}/kickbacks/${id}`,
       headers: {
         'Authorization': `Token token=${user.token}`
       }

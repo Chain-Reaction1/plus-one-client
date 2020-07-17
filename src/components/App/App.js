@@ -61,6 +61,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/kickback-create' render={() => (
             <KickbackCreate msgAlert={this.msgAlert} user={user} />
           )} />
+
           <Route user={user} exact path='/kickbacks/:id' render={() => (
             <KickbackShow msgAlert={this.msgAlert} user={user} />
           )} />

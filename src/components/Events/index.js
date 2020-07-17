@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import apiConfig from '../../apiConfig'
+import apiUrl from '../../apiConfig'
 
 class KickbackIndex extends React.Component {
   state = {
@@ -9,7 +9,7 @@ class KickbackIndex extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(`${apiConfig}/kickbacks`)
+    axios.get(`${apiUrl}/kickbacks`)
       .then(response => {
         // handle success
         this.setState({
@@ -42,6 +42,7 @@ class KickbackIndex extends React.Component {
                 <h4>{kickback.description}</h4>
                 <h4>{kickback.date}</h4>
                 <h4>{kickback.time}</h4>
+
               </li>
             )
           })}
