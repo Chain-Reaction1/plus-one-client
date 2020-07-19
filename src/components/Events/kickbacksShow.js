@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 
 class KickbackShow extends React.Component {
@@ -14,7 +14,6 @@ class KickbackShow extends React.Component {
     console.log('match is', this.match)
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
-    const id = this.props.match.params.id
     axios({
       method: 'GET',
       url: `${apiUrl}/kickbacks/${id}`,
@@ -54,13 +53,12 @@ class KickbackShow extends React.Component {
       headers: {
         'Authorization': `Token token=${user.token}`
       }
-        .then(() => msgAlert({
-          heading: 'Event Delete Success',
-          message: 'Message Success',
-          variant: 'Success'
-        }))
     })
-
+      .then(() => msgAlert({
+        heading: 'Event Delete Success',
+        message: 'Message Success',
+        variant: 'Success'
+      }))
       .then(response => {
         this.setState({
           deleted: true
@@ -70,6 +68,7 @@ class KickbackShow extends React.Component {
   }
 
   render () {
+    const id = this.props.match.params.id
     if (this.state.deleted === true) {
       return <Redirect to='/kickbacks' />
     }
@@ -82,11 +81,15 @@ class KickbackShow extends React.Component {
     } else {
       jsx = (
         <div>
-          <h3>{this.state.kickback.place}</h3>
+          <h3>{this.state.kickback.kickbackName}</h3>
+          <h4>{this.state.kickback.place}</h4>
           <h4>{this.state.kickback.date}</h4>
           <h4>{this.state.kickback.description}</h4>
           <h4>{this.state.kickback.time}</h4>
-          <button onClick={this.deleteKickback}>Delete event</button>
+          <button onClick={this.deleteKickback}>Delete Event</button>
+          <Link to={`/kickbacks/${id}/update`}>
+            <button>Update Event</button>
+          </Link>
         </div>
       )
     }

@@ -18,7 +18,6 @@ class KickbackIndex extends React.Component {
         })
         setKickbacks(response.data.kickbacks)
       })
-      .then(() => history.push('/'))
       .catch(error => {
         // handle error
         console.log(error)
