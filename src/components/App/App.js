@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import KickbackCreate from '../Events/kickbacksCreate'
 import KickbackShow from '../Events/kickbacksShow'
 import KickbackIndex from '../Events/kickbacksIndex'
+import KickbackUpdate from '../Events/kickbacksUpdate'
 
 class App extends Component {
   constructor () {
@@ -61,12 +62,15 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/kickback-create' render={() => (
             <KickbackCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/kickbacks/:id' render={({ match }) => {
+          <AuthenticatedRoute user={user} exact path='/kickbacks/:id' render={({ match }) => {
             this.state.kickbacks.find(kickback => kickback.id === match.params.id)
             return <KickbackShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
           <Route exact path='/kickbacks' render={() => (
             <KickbackIndex msgAlert={this.msgAlert} setKickbacks={this.setKickbacks} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/kickbacks/:id/update' render={({ match }) => (
+            <KickbackUpdate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
         </main>
       </Fragment>
