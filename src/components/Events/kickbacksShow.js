@@ -11,7 +11,7 @@ class KickbackShow extends React.Component {
 
   componentDidMount () {
     const id = this.props.match.params.id
-    const { msgAlert, user } = this.props
+    const { user } = this.props
     axios({
       method: 'GET',
       url: `${apiUrl}/kickbacks/${id}`,
@@ -25,11 +25,11 @@ class KickbackShow extends React.Component {
           kickback: response.data.kickback
         })
       })
-      .then(() => msgAlert({
-        heading: 'Event Show Success',
-        message: 'Message Success',
-        variant: 'Success'
-      }))
+      // .then(() => msgAlert({
+      //   heading: 'Event Show Success',
+      //   message: messages.kickbacksShowSuccess,
+      //   variant: 'Success'
+      // }))
       .catch(error => {
         // handle error
         console.log(error)
@@ -77,22 +77,26 @@ class KickbackShow extends React.Component {
     // after API responds
     } else {
       jsx = (
-        <div>
-          <h3>{this.state.kickback.kickbackName}</h3>
-          <h4>{this.state.kickback.place}</h4>
-          <h4>{this.state.kickback.date}</h4>
-          <h4>{this.state.kickback.description}</h4>
-          <h4>{this.state.kickback.time}</h4>
-          <button onClick={this.deleteKickback}>Delete Event</button>
-          <Link to={`/kickbacks/${id}/update`}>
-            <button>Update Event</button>
-          </Link>
+        <div className="row kickback-show">
+          <div className="col-sm-10 col-md-8 mx-auto mt-5">
+            <section>
+              <h3>{this.state.kickback.kickbackName}</h3>
+              <h4>{this.state.kickback.place}</h4>
+              <h4>{this.state.kickback.date}</h4>
+              <h4>{this.state.kickback.description}</h4>
+              <h4>{this.state.kickback.time}</h4>
+              <button className="btn" onClick={this.deleteKickback}>Delete Event</button>
+              <Link to={`/kickbacks/${id}/update`}>
+                <button className="btn">Update Event</button>
+              </Link>
+            </section>
+          </div>
         </div>
       )
     }
     return (
-      <div>
-        <h2>Single Event Page</h2>
+      <div className="kickback-show">
+        <h2>A Closer Look...</h2>
         {jsx}
       </div>
     )

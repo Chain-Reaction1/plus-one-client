@@ -35,26 +35,30 @@ class KickbackIndex extends React.Component {
     // if the API responds with events
     } else {
       jsx = (
-        <ul>
-          {this.state.kickbacks.map(kickback => {
-            return (
-              <li key={kickback._id}>
-                <Link to={`/kickbacks/${kickback._id}`}>{kickback.kickbackName}</Link>
-                <h4>{kickback.description}</h4>
-                <h4>{kickback.date}</h4>
-                <h4>{kickback.time}</h4>
-                <Link to={`/kickbacks/${kickback._id}/rsvp`}>
-                  <button>RSVP</button>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+        <div className="row">
+          <div className="col-sm-10 col-md-8 mx-auto mt-5 kickback-index">
+            <ul>
+              {this.state.kickbacks.map(kickback => {
+                return (
+                  <li key={kickback._id}>
+                    <h3><Link to={`/kickbacks/${kickback._id}`}>{kickback.kickbackName}</Link></h3>
+                    <h4>{kickback.description}</h4>
+                    <h4>{kickback.date}</h4>
+                    <h4>{kickback.time}</h4>
+                    <Link to={`/kickbacks/${kickback._id}/rsvp`}>
+                     <button>RSVP</button>
+                    </Link>
+                   </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       )
     }
 
     return (
-      <div>
+      <div className="kickback-index">
         <h2>Events Page</h2>
         {jsx}
       </div>
