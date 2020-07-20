@@ -4,9 +4,9 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
+    <Nav.Link href="#kickback-create">Create Event</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#kickback-create">Create Event</Nav.Link>
   </Fragment>
 )
 
@@ -25,8 +25,8 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+  <Navbar className="navbar" variant="dark" expand="md">
+    <Navbar.Brand className="logo" href="#">
       plusONE
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
