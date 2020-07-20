@@ -1,1 +1,92 @@
 @import '~bootstrap/scss/bootstrap';
+
+$theme-primary: #60CAC2;
+$theme-btn: #520CAC;
+
+body {
+  font-family: 'Dancing Script', cursive;
+  background: $theme-primary;
+}
+
+.kickback-index {
+  font-size: 24px;
+  text-align: center;
+  h2 {
+    text-align: center;
+    font-size: 50px;
+    padding: 15px 0;
+    margin: 0;
+  }
+  a {
+    font-size: 40px;
+    color: $theme-btn;
+  }
+  a:hover {
+    color: white;
+  }
+  li {
+    background: lighten($theme-primary, 25%);
+    border: 8px solid black;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 20px 0;
+    list-style: none;
+  }
+}
+
+.btn {
+  background: $theme-btn;
+  border: 1px solid white;
+  color: white;
+  margin: 5px;
+  padding: 8px 15px;
+  border-radius: 6px;
+}
+.btn:hover {
+  background: darken($theme-primary, 25%);
+  border: 1px solid black;
+}
+
+.navbar {
+  background: darken($theme-primary, 30%);
+  font-family: 'Courgette', cursive;
+}
+
+.kickback-show {
+  text-align: center;
+  font-size: 24px;
+  section {
+    background: lighten($theme-primary, 25%);
+    border: 8px solid black;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 20px 0;
+    list-style: none;
+  }
+  h2 {
+    text-align: center;
+    font-size: 50px;
+    padding: 15px 0;
+    margin: 0;
+  }
+}
+
+// .container.msg-alert {
+//   background: orange;
+// }
+
+.logo {
+  font-size: 40px;
+}
+// .kickback-create {
+//   background-image: url('./img/create-bkg.jpg');
+//   min-width: 100%;
+//   min-height: 100%;
+//   opacity: .5;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+// nav-link {
+//   font-family: 'Courgette', cursive;
+// }
