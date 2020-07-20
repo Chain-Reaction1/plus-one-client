@@ -46,9 +46,9 @@ class KickbackIndex extends React.Component {
                     <h4>{kickback.date}</h4>
                     <h4>{kickback.time}</h4>
                     <Link to={`/kickbacks/${kickback._id}/rsvp`}>
-                     <button>RSVP</button>
+                      <button className="btn">RSVP</button>
                     </Link>
-                   </li>
+                  </li>
                 )
               })}
             </ul>

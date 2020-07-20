@@ -81,12 +81,11 @@ class KickbackUpdate extends React.Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h1>Create Event</h1>
+          <h1>Update Event</h1>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="kickbackName">
               <Form.Label>Event Name</Form.Label>
               <Form.Control
-                required
                 type="text"
                 name="kickbackName"
                 value={this.state.kickback.kickbackName}
@@ -97,7 +96,6 @@ class KickbackUpdate extends React.Component {
             <Form.Group controlId="place">
               <Form.Label>Location</Form.Label>
               <Form.Control
-                required
                 type="text"
                 name="place"
                 value={this.state.kickback.place}
@@ -108,7 +106,6 @@ class KickbackUpdate extends React.Component {
             <Form.Group controlId="date">
               <Form.Label>Date</Form.Label>
               <Form.Control
-                required
                 type="date"
                 name="date"
                 value={this.state.kickback.date}
@@ -119,7 +116,6 @@ class KickbackUpdate extends React.Component {
             <Form.Group controlId="time">
               <Form.Label>Time</Form.Label>
               <Form.Control
-                required
                 type="time"
                 name="time"
                 value={this.state.kickback.time}
@@ -130,7 +126,6 @@ class KickbackUpdate extends React.Component {
             <Form.Group controlId="description">
               <Form.Label>Event Description</Form.Label>
               <Form.Control
-                required
                 type="text"
                 name="description"
                 value={this.state.kickback.description}
