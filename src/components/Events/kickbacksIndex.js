@@ -43,6 +43,9 @@ class KickbackIndex extends React.Component {
                 <h4>{kickback.description}</h4>
                 <h4>{kickback.date}</h4>
                 <h4>{kickback.time}</h4>
+                <Link to={`/kickbacks/${kickback._id}/rsvp`}>
+                  <button>RSVP</button>
+                </Link>
               </li>
             )
           })}

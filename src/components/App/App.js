@@ -12,6 +12,7 @@ import KickbackCreate from '../Events/kickbacksCreate'
 import KickbackShow from '../Events/kickbacksShow'
 import KickbackIndex from '../Events/kickbacksIndex'
 import KickbackUpdate from '../Events/kickbacksUpdate'
+import RsvpCreate from '../RSVP/Create'
 
 class App extends Component {
   constructor () {
@@ -71,6 +72,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/kickbacks/:id/update' render={({ match }) => (
             <KickbackUpdate msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/kickbacks/:id/rsvp' render={({ match }) => (
+            <RsvpCreate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
         </main>
       </Fragment>
