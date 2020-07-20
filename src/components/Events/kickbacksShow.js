@@ -56,6 +56,11 @@ class KickbackShow extends React.Component {
           deleted: true
         })
       })
+      .catch(() => msgAlert({
+        heading: 'Event Delete Failure',
+        message: 'Message Failure',
+        variant: 'Failure'
+      }))
       .catch(console.error)
   }
 

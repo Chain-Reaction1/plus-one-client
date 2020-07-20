@@ -11,6 +11,7 @@ class RsvpCreate extends React.Component {
   componentDidMount () {
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
+    console.log(user)
     axios({
       method: 'POST',
       url: `${apiConfig}/kickbacks/${id}/rsvps`,
@@ -18,13 +19,15 @@ class RsvpCreate extends React.Component {
         'Authorization': `Token token=${user.token}`
       },
       data: {
-        guest: user._id
+        guest: user._id,
+        name: user.name
       }
     })
       .then(res => {
         this.setState({
           rsvps: res.data.kickback.rsvps
         })
+        console.log(res)
       })
       .then(() => msgAlert({
         heading: 'RSVP Success',
@@ -36,23 +39,27 @@ class RsvpCreate extends React.Component {
   }
   render () {
     console.log(this.state)
+    const rsvpList = this.state.rsvps
+    const uniqueList = [...new Set(rsvpList)]
+    console.log(rsvpList)
+    console.log(uniqueList)
     let jsx
     // if the API has not responded yet
-    if (this.state.rsvps === null) {
+    if (rsvpList === null) {
       jsx = <p>Loading...</p>
 
     // if the API responds with no kickbacks
-    } else if (this.state.rsvps.length === 0) {
+    } else if (rsvpList.length === 0) {
       jsx = <p>No one has RSVPd to this event.</p>
     // if the API responds with events
     } else {
       jsx = (
         <ul>
-          {this.state.rsvps.map(user => {
-            if (user !== null) {
+          {rsvpList.map(rsvp => {
+            if (rsvp !== null) {
               return (
-                <li key={user._id}>
-                  <h4>{user._id}</h4>
+                <li key={rsvp._id}>
+                  <h4>{rsvp.name}</h4>
                 </li>
               )
             }
