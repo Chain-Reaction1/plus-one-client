@@ -11,7 +11,6 @@ class RsvpCreate extends React.Component {
   componentDidMount () {
     const id = this.props.match.params.id
     const { msgAlert, user } = this.props
-    console.log(user)
     axios({
       method: 'POST',
       url: `${apiConfig}/kickbacks/${id}/rsvps`,
@@ -27,7 +26,6 @@ class RsvpCreate extends React.Component {
         this.setState({
           rsvps: res.data.kickback.rsvps
         })
-        console.log(res)
       })
       .then(() => msgAlert({
         heading: 'RSVP Success',
@@ -38,11 +36,7 @@ class RsvpCreate extends React.Component {
       .catch(console.error)
   }
   render () {
-    console.log(this.state)
     const rsvpList = this.state.rsvps
-    const uniqueList = [...new Set(rsvpList)]
-    console.log(rsvpList)
-    console.log(uniqueList)
     let jsx
     // if the API has not responded yet
     if (rsvpList === null) {

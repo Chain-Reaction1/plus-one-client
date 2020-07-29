@@ -18,10 +18,7 @@ class KickbackIndex extends React.Component {
         })
         setKickbacks(response.data.kickbacks)
       })
-      .catch(error => {
-        // handle error
-        console.log(error)
-      })
+      .catch(console.error)
   }
   render () {
     let jsx

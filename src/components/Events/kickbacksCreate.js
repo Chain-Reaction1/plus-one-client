@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import apiConfig from '../../apiConfig'
-// import { Redirect } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import messages from '../AutoDismissAlert/messages'
@@ -58,9 +57,9 @@ class KickbackCreate extends React.Component {
           }
         })
       })
-
       .catch(console.error)
   }
+
   render () {
     return (
       <div className="row kickback-create">

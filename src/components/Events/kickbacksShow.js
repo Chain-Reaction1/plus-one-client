@@ -25,15 +25,7 @@ class KickbackShow extends React.Component {
           kickback: response.data.kickback
         })
       })
-      // .then(() => msgAlert({
-      //   heading: 'Event Show Success',
-      //   message: messages.kickbacksShowSuccess,
-      //   variant: 'Success'
-      // }))
-      .catch(error => {
-        // handle error
-        console.log(error)
-      })
+      .catch(console.error)
   }
 
   deleteKickback = () => {
